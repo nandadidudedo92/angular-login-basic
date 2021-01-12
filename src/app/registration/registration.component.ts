@@ -12,6 +12,8 @@ import { Router } from '@angular/router';
 export class RegistrationComponent implements OnInit {
 
   user = new User()
+  msg = "";
+  detail = "";
 
   constructor(private _registrationService: RegistrationService, private router: Router) { }
 
@@ -22,10 +24,13 @@ export class RegistrationComponent implements OnInit {
     this._registrationService.loginUserFromRemote(this.user).subscribe(
       data => {
       console.log("response recieved");
+      this.detail = data.detail;
 
-      this.router.navigate(['/'])
-
-
+      if(this.detail.includes("Success")) {
+        this.router.navigate(['/'])
+      } else {
+        this.msg = data.detail;
+      }
     }
       ,
       error => {
