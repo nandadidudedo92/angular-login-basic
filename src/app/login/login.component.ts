@@ -22,9 +22,10 @@ export class LoginComponent implements OnInit {
   loginUser(){
     this._loginService.loginUserFromRemote(this.user).subscribe(
       data => {
-      console.log("response recieved");
+      console.log(data.detail);
+      this.user = data.datas;
 
-      this.router.navigate(['/landingPage'])
+      this.router.navigate(['/landingPage'],{state: {data: this.user}});
 
 
     }
