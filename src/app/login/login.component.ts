@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  // private currentUserSubject: BehaviorSubject<User>;
 
   user = new User();
   msg = "";
@@ -28,6 +29,7 @@ export class LoginComponent implements OnInit {
 
       if (this.detail.includes("Success") ) {
         this.user = data.datas;
+        localStorage.setItem('currentUser', JSON.stringify(this.user));
         this.router.navigate(['/landingPage'],{state: {data: this.user}});
       } else {
         this.msg = data.detail;

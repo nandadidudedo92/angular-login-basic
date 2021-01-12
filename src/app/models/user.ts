@@ -3,6 +3,7 @@ export class User {
     email: String;
     userName: String;
     password: String;
+    token?: String;
 
     constructor(){} 
 }

@@ -17,10 +17,14 @@ export class HomeComponent implements OnInit {
    }
 
   ngOnInit(): void {
-
+    if (!history.state) {
+      console.log("asu")
+      this.router.navigate(['/login']);
+    } else {
     const s = history.state;
     this.user = s.data
-    console.log(s)
+    console.log(s);
+  }
   }
 
 }
