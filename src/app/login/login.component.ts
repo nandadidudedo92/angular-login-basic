@@ -12,6 +12,7 @@ export class LoginComponent implements OnInit {
 
   user = new User();
   msg = "";
+  detail = "";
   
   constructor(private _loginService: LoginService, private router: Router) { }
 
@@ -23,10 +24,14 @@ export class LoginComponent implements OnInit {
     this._loginService.loginUserFromRemote(this.user).subscribe(
       data => {
       console.log(data.detail);
-      this.user = data.datas;
+      this.detail = data.detail;
 
-      this.router.navigate(['/landingPage'],{state: {data: this.user}});
-
+      if (this.detail.includes("Success") ) {
+        this.user = data.datas;
+        this.router.navigate(['/landingPage'],{state: {data: this.user}});
+      } else {
+        this.msg = data.detail;
+      }
 
     }
       ,
