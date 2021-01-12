@@ -1,0 +1,42 @@
+
+
+<!-- Page Content -->
+<div class="container center" style="max-width: 500px;  ">
+  <div class="card border-0 shadow my-5" >
+    <div class="card-body p-5" >
+        <form #loginform="ngForm" >
+          <div class="form-group">
+            <label class="control-label " for="userName">Username:</label>
+            <div class="col-sm-12">
+              <input type="email" class="form-control" placeholder="Enter Username" name="email"  [(ngModel)]="user.userName" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label " for="pwd" >Password:</label>
+            <div class="col-sm-12">          
+              <input type="password" class="form-control" placeholder="Enter Password" name="pwd" [(ngModel)]="user.password" required>
+            </div>
+          </div>
+          <div class="form-group">        
+            <div class="col-sm-offset-2 col-sm-10">
+              <div class="checkbox">
+                <label><input type="checkbox" name="remember"> Remember me</label>
+              </div>
+              <div>
+                <small class="text-danger"><span>{{msg}}</span></small>
+              </div>
+            </div>
+          </div>
+          
+          <div class="form-group">        
+            <div class="col-sm-offset-4 col-sm-12" >
+              <button type="submit" class="btn btn-info float-left" (click)="loginUser()">Login</button>
+              <button type="submit" class="btn btn-primary float-right" (click)="goRegis()" >Register</button>
+              
+            </div>
+            
+          </div>
+        </form>
+        
+    </div>
+  </div>
